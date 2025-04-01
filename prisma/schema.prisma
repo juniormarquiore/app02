@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String
+  email         String    @unique
+  password      String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  projects      Project[]
+}
+
+model Project {
+  id          String    @id @default(cuid())
+  title       String
+  description String?
+  status      String    @default("em_andamento")
+  userId      String
+  user        User      @relation(fields: [userId], references: [id])
+  previews    Preview[]
+  musics      Music[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  deadline    DateTime?
+}
+
+model Preview {
+  id        String   @id @default(cuid())
+  url       String
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id])
+  createdAt DateTime @default(now())
+  approved  Boolean  @default(false)
+}
+
+model Music {
+  id        String   @id @default(cuid())
+  title     String
+  artist    String?
+  url       String
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id])
+  selected  Boolean  @default(false)
+  createdAt DateTime @default(now())
+} 
