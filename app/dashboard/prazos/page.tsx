@@ -1,14 +1,21 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Calendar } from "@/components/ui/calendar"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { AlertCircle, CalendarIcon, CheckCircle2, Clock } from "lucide-react"
 
 export default function PrazosPage() {
-  // Armazenar a data atual para comparação
-  const [currentDate] = useState(new Date())
+  const [currentDate, setCurrentDate] = useState<Date | null>(null)
+
+  useEffect(() => {
+    setCurrentDate(new Date())
+  }, [])
+
+  if (!currentDate) {
+    return null // ou um componente de loading
+  }
 
   return (
     <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
@@ -30,7 +37,6 @@ export default function PrazosPage() {
                 <CardDescription>Visualize as datas importantes do seu projeto</CardDescription>
               </CardHeader>
               <CardContent>
-                {/* Usando uma data fixa para comparação em vez de uma função inline */}
                 <Calendar mode="single" className="rounded-md border" fromDate={currentDate} />
               </CardContent>
             </Card>

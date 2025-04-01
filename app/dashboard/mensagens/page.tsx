@@ -2,13 +2,15 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Input } from "@/components/ui/input"
 import { Send } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
+import { format } from "date-fns"
+import { ptBR } from "date-fns/locale"
 
 // Dados simulados de mensagens
 const initialMessages = [
@@ -79,16 +81,9 @@ export default function MensagensPage() {
     })
   }
 
-  // Formatar data
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString)
-    return date.toLocaleString("pt-BR", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    })
+  // Formatar data usando date-fns
+  const formatMessageDate = (dateString: string) => {
+    return format(new Date(dateString), "dd/MM/yyyy HH:mm", { locale: ptBR })
   }
 
   // Contar mensagens não lidas
@@ -128,7 +123,7 @@ export default function MensagensPage() {
                 >
                   <div className="flex justify-between items-start gap-2 mb-1">
                     <span className="font-medium text-sm">{message.name}</span>
-                    <span className="text-xs opacity-70">{formatDate(message.timestamp)}</span>
+                    <span className="text-xs opacity-70">{formatMessageDate(message.timestamp)}</span>
                   </div>
                   <p className="text-sm">{message.content}</p>
                 </div>
