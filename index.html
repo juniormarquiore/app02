@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marquiore Films - Produtora de Vídeos</title>
+    <meta name="description" content="Produtora de vídeos especializada em eventos e documentários.">
+    <link rel="icon" href="/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #666;
+        }
+
+        .logo {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 30px;
+            background: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            font-weight: bold;
+            color: #333;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1.1em;
+            margin: 10px;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .loading {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+
+            .btn {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">MF</div>
+        <h1>Marquiore Films</h1>
+        <p>Bem-vindo à nossa produtora de vídeos especializada em eventos e documentários.</p>
+        <a href="http://localhost:3000" class="btn">Acessar o Portal</a>
+        <a href="http://localhost:3000/cadastro" class="btn">Cadastrar</a>
+        <p class="loading">Redirecionando para o portal em <span id="countdown">5</span> segundos...</p>
+    </div>
+
+    <script>
+        // Contagem regressiva e redirecionamento
+        let count = 5;
+        const countdownElement = document.getElementById('countdown');
+        
+        const countdown = setInterval(() => {
+            count--;
+            countdownElement.textContent = count;
+            
+            if (count <= 0) {
+                clearInterval(countdown);
+                window.location.href = 'http://localhost:3000';
+            }
+        }, 1000);
+
+        // Verifica se o servidor está rodando
+        async function checkServer() {
+            try {
+                const response = await fetch('http://localhost:3000/api/health');
+                if (!response.ok) {
+                    throw new Error('Servidor não está respondendo');
+                }
+            } catch (error) {
+                clearInterval(countdown);
+                countdownElement.parentElement.textContent = 'Por favor, certifique-se que o servidor está rodando (npm run dev)';
+            }
+        }
+
+        checkServer();
+    </script>
+</body>
+</html> 
