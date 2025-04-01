@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <base href="/app02/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marquiore Films - Portal do Cliente</title>
     <meta name="description" content="Portal do Cliente Marquiore Films - Acompanhe seu projeto, visualize prévias e muito mais.">
-    <link rel="icon" href="./favicon.ico">
+    <link rel="icon" href="favicon.ico">
     <style>
         * {
             margin: 0;
@@ -176,8 +177,8 @@
 </head>
 <body>
     <header class="header">
-        <a href="/app02" class="logo">Marquiore Films</a>
-        <a href="/app02/cadastro" class="cadastrar-btn">Cadastrar</a>
+        <a href="./" class="logo">Marquiore Films</a>
+        <a href="cadastro" class="cadastrar-btn">Cadastrar</a>
     </header>
 
     <main class="main-content">
@@ -221,7 +222,7 @@
             <h2 class="form-title">Entrar</h2>
             <p class="form-subtitle">Acesse sua conta para visualizar seu projeto</p>
             
-            <form class="login-form" onSubmit="handleSubmit(event)">
+            <form class="login-form" onsubmit="return handleSubmit(event)">
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" placeholder="seu@email.com" required>
@@ -230,7 +231,7 @@
                 <div class="form-group">
                     <label for="password">Senha</label>
                     <input type="password" id="password" required>
-                    <a href="/app02/recuperar-senha" class="forgot-password">Esqueceu a senha?</a>
+                    <a href="recuperar-senha" class="forgot-password">Esqueceu a senha?</a>
                 </div>
 
                 <button type="submit" class="submit-btn">Entrar</button>
@@ -239,29 +240,22 @@
     </main>
 
     <script>
-        function handleSubmit(e) {
-            e.preventDefault();
+        function handleSubmit(event) {
+            event.preventDefault();
+            
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
             // Aqui você pode adicionar validação dos campos
+            if (!email || !password) {
+                alert('Por favor, preencha todos os campos');
+                return false;
+            }
 
             // Redireciona para o dashboard
-            window.location.href = '/app02/dashboard';
+            window.location.href = 'dashboard';
+            return false;
         }
-
-        // Ajusta os links para funcionarem no GitHub Pages
-        document.addEventListener('DOMContentLoaded', function() {
-            const baseUrl = '/app02';
-            
-            // Ajusta todos os links para incluir o prefixo do repositório
-            document.querySelectorAll('a').forEach(link => {
-                const href = link.getAttribute('href');
-                if (href && href.startsWith('/') && !href.startsWith(baseUrl)) {
-                    link.setAttribute('href', baseUrl + href);
-                }
-            });
-        });
     </script>
 </body>
 </html> 

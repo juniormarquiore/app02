@@ -8,9 +8,9 @@ export default function CadastroPage() {
     <div className="min-h-screen flex flex-col">
       <header className="border-b">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/app02" className="flex items-center gap-2">
             <Image
-              src="/placeholder.svg?height=40&width=40"
+              src="/app02/placeholder.svg"
               alt="Marquiore Films Logo"
               width={40}
               height={40}
@@ -18,7 +18,7 @@ export default function CadastroPage() {
             />
             <span className="text-xl font-semibold">Marquiore Films</span>
           </Link>
-          <Link href="/">
+          <Link href="/app02">
             <Button variant="ghost">Voltar</Button>
           </Link>
         </div>
