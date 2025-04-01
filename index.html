@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marquiore Films - Produtora de Vídeos</title>
-    <meta name="description" content="Produtora de vídeos especializada em eventos e documentários.">
+    <title>Marquiore Films - Portal do Cliente</title>
+    <meta name="description" content="Portal do Cliente Marquiore Films - Acompanhe seu projeto, visualize prévias e muito mais.">
     <link rel="icon" href="/favicon.ico">
     <style>
         * {
@@ -15,138 +15,235 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            background: #FFF5F5;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
             color: #333;
-            text-align: center;
             padding: 20px;
         }
 
-        .container {
-            background: white;
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #000;
+            text-decoration: none;
+        }
+
+        .cadastrar-btn {
+            text-decoration: none;
+            color: #000;
+            font-weight: 500;
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
             padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 40px;
+        }
+
+        .left-section {
+            flex: 1;
             max-width: 600px;
-            width: 90%;
+        }
+
+        .right-section {
+            flex: 1;
+            max-width: 400px;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         h1 {
             font-size: 2.5em;
             margin-bottom: 20px;
-            color: #1a1a1a;
+            color: #000;
         }
 
-        p {
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin-bottom: 30px;
+        .description {
             color: #666;
-        }
-
-        .logo {
-            width: 150px;
-            height: 150px;
             margin-bottom: 30px;
-            background: #f0f0f0;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2em;
-            font-weight: bold;
-            color: #333;
-            margin: 0 auto 30px;
+            line-height: 1.6;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            background: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .feature-title {
             font-weight: 600;
-            transition: all 0.3s ease;
-            font-size: 1.1em;
-            margin: 10px;
+            margin-bottom: 10px;
         }
 
-        .btn:hover {
-            background: #0056b3;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        .feature-description {
+            color: #666;
+            font-size: 0.9em;
         }
 
-        .loading {
-            margin-top: 20px;
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .form-subtitle {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .form-group label {
+            font-weight: 500;
+        }
+
+        .form-group input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        .forgot-password {
+            text-align: right;
             font-size: 0.9em;
             color: #666;
+            text-decoration: none;
         }
 
-        @media (max-width: 480px) {
-            .container {
+        .submit-btn {
+            background: #000;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #333;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
                 padding: 20px;
             }
 
-            h1 {
-                font-size: 2em;
+            .features {
+                grid-template-columns: 1fr;
             }
 
-            p {
-                font-size: 1em;
-            }
-
-            .btn {
-                padding: 12px 25px;
-                font-size: 1em;
+            .right-section {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo">MF</div>
-        <h1>Marquiore Films</h1>
-        <p>Bem-vindo à nossa produtora de vídeos especializada em eventos e documentários.</p>
-        <a href="http://localhost:3000" class="btn">Acessar o Portal</a>
-        <a href="http://localhost:3000/cadastro" class="btn">Cadastrar</a>
-        <p class="loading">Redirecionando para o portal em <span id="countdown">5</span> segundos...</p>
-    </div>
+    <header class="header">
+        <a href="/" class="logo">Marquiore Films</a>
+        <a href="/cadastro" class="cadastrar-btn">Cadastrar</a>
+    </header>
+
+    <main class="main-content">
+        <section class="left-section">
+            <h1>Bem-vindo ao Portal do Cliente</h1>
+            <p class="description">
+                Acompanhe o andamento do seu projeto, visualize prévias,
+                escolha músicas e muito mais. Tudo em um só lugar para
+                tornar sua experiência ainda mais especial.
+            </p>
+
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-title">Acompanhamento</div>
+                    <div class="feature-description">
+                        Acompanhe cada etapa da produção do seu vídeo
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-title">Prévias</div>
+                    <div class="feature-description">
+                        Visualize trechos do seu vídeo antes da entrega final
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-title">Músicas</div>
+                    <div class="feature-description">
+                        Escolha as músicas que farão parte da trilha sonora
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-title">Prazos</div>
+                    <div class="feature-description">
+                        Acompanhe os prazos de entrega de cada etapa
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="right-section">
+            <h2 class="form-title">Entrar</h2>
+            <p class="form-subtitle">Acesse sua conta para visualizar seu projeto</p>
+            
+            <form class="login-form" action="http://localhost:3000">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="seu@email.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" required>
+                    <a href="#" class="forgot-password">Esqueceu a senha?</a>
+                </div>
+
+                <button type="submit" class="submit-btn">Entrar</button>
+            </form>
+        </section>
+    </main>
 
     <script>
-        // Contagem regressiva e redirecionamento
-        let count = 5;
-        const countdownElement = document.getElementById('countdown');
-        
-        const countdown = setInterval(() => {
-            count--;
-            countdownElement.textContent = count;
-            
-            if (count <= 0) {
-                clearInterval(countdown);
-                window.location.href = 'http://localhost:3000';
-            }
-        }, 1000);
-
-        // Verifica se o servidor está rodando
-        async function checkServer() {
-            try {
-                const response = await fetch('http://localhost:3000/api/health');
-                if (!response.ok) {
-                    throw new Error('Servidor não está respondendo');
-                }
-            } catch (error) {
-                clearInterval(countdown);
-                countdownElement.parentElement.textContent = 'Por favor, certifique-se que o servidor está rodando (npm run dev)';
-            }
-        }
-
-        checkServer();
+        // Redireciona para o app Next.js após o submit do formulário
+        document.querySelector('.login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            window.location.href = 'http://localhost:3000';
+        });
     </script>
 </body>
 </html> 
