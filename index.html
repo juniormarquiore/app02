@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marquiore Films - Portal do Cliente</title>
     <meta name="description" content="Portal do Cliente Marquiore Films - Acompanhe seu projeto, visualize prévias e muito mais.">
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="./favicon.ico">
     <style>
         * {
             margin: 0;
@@ -176,8 +176,8 @@
 </head>
 <body>
     <header class="header">
-        <a href="/" class="logo">Marquiore Films</a>
-        <a href="https://juniormarquiore.github.io/app02/cadastro" class="cadastrar-btn">Cadastrar</a>
+        <a href="/app02" class="logo">Marquiore Films</a>
+        <a href="/app02/cadastro" class="cadastrar-btn">Cadastrar</a>
     </header>
 
     <main class="main-content">
@@ -221,7 +221,7 @@
             <h2 class="form-title">Entrar</h2>
             <p class="form-subtitle">Acesse sua conta para visualizar seu projeto</p>
             
-            <form class="login-form" action="https://juniormarquiore.github.io/app02/dashboard">
+            <form class="login-form" onSubmit="handleSubmit(event)">
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" placeholder="seu@email.com" required>
@@ -230,7 +230,7 @@
                 <div class="form-group">
                     <label for="password">Senha</label>
                     <input type="password" id="password" required>
-                    <a href="https://juniormarquiore.github.io/app02/recuperar-senha" class="forgot-password">Esqueceu a senha?</a>
+                    <a href="/app02/recuperar-senha" class="forgot-password">Esqueceu a senha?</a>
                 </div>
 
                 <button type="submit" class="submit-btn">Entrar</button>
@@ -239,10 +239,28 @@
     </main>
 
     <script>
-        // Redireciona para o app no GitHub Pages após o submit do formulário
-        document.querySelector('.login-form').addEventListener('submit', function(e) {
+        function handleSubmit(e) {
             e.preventDefault();
-            window.location.href = 'https://juniormarquiore.github.io/app02/dashboard';
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Aqui você pode adicionar validação dos campos
+
+            // Redireciona para o dashboard
+            window.location.href = '/app02/dashboard';
+        }
+
+        // Ajusta os links para funcionarem no GitHub Pages
+        document.addEventListener('DOMContentLoaded', function() {
+            const baseUrl = '/app02';
+            
+            // Ajusta todos os links para incluir o prefixo do repositório
+            document.querySelectorAll('a').forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && href.startsWith('/') && !href.startsWith(baseUrl)) {
+                    link.setAttribute('href', baseUrl + href);
+                }
+            });
         });
     </script>
 </body>
