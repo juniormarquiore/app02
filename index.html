@@ -177,7 +177,7 @@
 <body>
     <header class="header">
         <a href="/" class="logo">Marquiore Films</a>
-        <a href="/cadastro" class="cadastrar-btn">Cadastrar</a>
+        <a href="https://juniormarquiore.github.io/app02/cadastro" class="cadastrar-btn">Cadastrar</a>
     </header>
 
     <main class="main-content">
@@ -221,7 +221,7 @@
             <h2 class="form-title">Entrar</h2>
             <p class="form-subtitle">Acesse sua conta para visualizar seu projeto</p>
             
-            <form class="login-form" action="http://localhost:3000">
+            <form class="login-form" action="https://juniormarquiore.github.io/app02/dashboard">
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" placeholder="seu@email.com" required>
@@ -230,7 +230,7 @@
                 <div class="form-group">
                     <label for="password">Senha</label>
                     <input type="password" id="password" required>
-                    <a href="#" class="forgot-password">Esqueceu a senha?</a>
+                    <a href="https://juniormarquiore.github.io/app02/recuperar-senha" class="forgot-password">Esqueceu a senha?</a>
                 </div>
 
                 <button type="submit" class="submit-btn">Entrar</button>
@@ -239,10 +239,10 @@
     </main>
 
     <script>
-        // Redireciona para o app Next.js após o submit do formulário
+        // Redireciona para o app no GitHub Pages após o submit do formulário
         document.querySelector('.login-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            window.location.href = 'http://localhost:3000';
+            window.location.href = 'https://juniormarquiore.github.io/app02/dashboard';
         });
     </script>
 </body>
